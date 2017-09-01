@@ -32,7 +32,6 @@ export default async function request(url, options) {
     data,
     headers: {},
   };
-  console.log(data)
 
   if (response.headers.get('x-total-count')) {
     ret.headers['x-total-count'] = response.headers.get('x-total-count');
