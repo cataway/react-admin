@@ -6,9 +6,13 @@ import { routerRedux } from 'dva/router';
 import { PAGE_SIZE } from '../../constants';
 
 function Users({ dispatch, list: dataSource, loading, total, page: current }) {
-	function deleteHandler(id) {
-		console.warn(`TODO: ${id}`);
-	}
+	  function deleteHandler(id) {
+	    dispatch({
+	      type: 'users/remove',
+	      payload: id,
+	    });
+	    console.log(id)
+	  }
 
 	function pageChangeHandler(page) {
 		dispatch(routerRedux.push({
@@ -41,7 +45,7 @@ function Users({ dispatch, list: dataSource, loading, total, page: current }) {
 				<span className={styles.operation}>
 					<a href="">Edit</a>
 					<Popconfirm title="Confirm to delete?" onConfirm={deleteHandler.bind(null, id)}>
-						<a href="">Delete</a>
+						<a href="">Delete</a>{id}
 					</Popconfirm>
 				</span>
 			),
@@ -89,6 +93,7 @@ function mapStateToProps(state) {
 		total,
 		page,
 	}
+	console.log(state.users)
 }
 
 
