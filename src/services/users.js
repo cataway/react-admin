@@ -10,3 +10,10 @@ import { PAGE_SIZE } from '../constants';
  		method: 'DELETE',
  	});
  }
+
+ export function patch(id, values) {
+ 	return request(`/api/users/${id}`, {
+ 		method: 'PATCH',
+ 		body: JSON.stringify(values),
+ 	});
+ }
